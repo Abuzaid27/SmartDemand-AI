@@ -16,7 +16,8 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5173"
+        "http://localhost:5173",
+        "https://smart-demand-9qbf9u45p-abuzaid-pathan-s-projects.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
