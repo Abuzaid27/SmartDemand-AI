@@ -4,11 +4,52 @@ function Dataset() {
 
   const [file, setFile] = useState(null)
 
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
 
-    setFile(e.target.files[0])
+  const selectedFile = e.target.files[0]
+
+  setFile(selectedFile)
+
+  const formData = new FormData()
+
+  formData.append(
+    "file",
+    selectedFile
+  )
+
+  try {
+
+    const response =
+      await API.post(
+        "/upload-dataset",
+        formData,
+        {
+          headers: {
+            "Content-Type":
+              "multipart/form-data"
+          }
+        }
+      )
+
+    alert(
+      response.data.message
+    )
+
+    console.log(
+      response.data
+    )
+
+  } catch (error) {
+
+    console.error(error)
+
+    alert(
+      "Dataset upload failed"
+    )
 
   }
+
+}
 
   return (
 

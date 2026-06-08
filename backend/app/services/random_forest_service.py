@@ -1,11 +1,12 @@
 import joblib
 import pandas as pd
 
-model = joblib.load(
-    "app/ml/random_forest_model.pkl"
-)
 
 def predict_sales(data):
+
+    model = joblib.load(
+        "app/ml/random_forest_model.pkl"
+    )
 
     df = pd.DataFrame([data])
 
